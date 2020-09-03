@@ -198,15 +198,6 @@ public class Cliente implements Serializable {
         return fechanacimiento;
     }
 
-    public void setFechanacimiento(String fechanacimiento) {
-        try {
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            this.fechanacimiento = formatter.parse(fechanacimiento);
-        } catch (ParseException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     public void setFechanacimiento(Date fechanacimiento) {
         this.fechanacimiento = fechanacimiento;
     }
