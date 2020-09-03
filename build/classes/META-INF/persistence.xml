@@ -3,6 +3,7 @@
   <persistence-unit name="FindFastProPU" transaction-type="JTA">
     <jta-data-source>FindFastPro</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties/>
+    <properties>
+    </properties>
   </persistence-unit>
 </persistence>

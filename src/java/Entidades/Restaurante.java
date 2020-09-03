@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Restaurante.findByDireccion", query = "SELECT r FROM Restaurante r WHERE r.direccion = :direccion"),
     @NamedQuery(name = "Restaurante.findByTelefono", query = "SELECT r FROM Restaurante r WHERE r.telefono = :telefono"),
     @NamedQuery(name = "Restaurante.findByCorreo", query = "SELECT r FROM Restaurante r WHERE r.correo = :correo"),
-    @NamedQuery(name = "Restaurante.findByDescripcion", query = "SELECT r FROM Restaurante r WHERE r.descripcion = :descripcion")})
+    @NamedQuery(name = "Restaurante.findByDescripcion", query = "SELECT r FROM Restaurante r WHERE r.descripcion = :descripcion"),
+    @NamedQuery(name = "Restaurante.findByImagen", query = "SELECT r FROM Restaurante r WHERE r.imagen = :imagen")})
 public class Restaurante implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -67,6 +68,9 @@ public class Restaurante implements Serializable {
     @Size(max = 300)
     @Column(name = "descripcion")
     private String descripcion;
+    @Size(max = 255)
+    @Column(name = "imagen")
+    private String imagen;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "restauranteRuc")
     private Collection<Ordencompra> ordencompraCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "restauranteRuc")
@@ -141,6 +145,14 @@ public class Restaurante implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     @XmlTransient
