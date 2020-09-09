@@ -4,7 +4,7 @@
  */
 package Sesiones;
 
-import Entidades.Cliente;
+import Entidades.Empleado;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -13,10 +13,10 @@ import javax.persistence.Query;
 
 /**
  *
- * @author Xime
+ * @author andre
  */
 @Stateless
-public class ClienteFacade extends AbstractFacade<Cliente> implements ClienteFacadeLocal {
+public class EmpleadoFacade extends AbstractFacade<Empleado> implements EmpleadoFacadeLocal {
     @PersistenceContext(unitName = "FindFastProPU")
     private EntityManager em;
 
@@ -25,15 +25,16 @@ public class ClienteFacade extends AbstractFacade<Cliente> implements ClienteFac
         return em;
     }
 
-    public ClienteFacade() {
-        super(Cliente.class);
+    public EmpleadoFacade() {
+        super(Empleado.class);
     }
-      //todos los metodos deberian ir por aqui 
-    public List<Cliente> listarClientes() {
-        List<Cliente> listaClientes;
-        Query sql = em.createNamedQuery("Cliente.findAll");
-        listaClientes = sql.getResultList();
-        return listaClientes;
+    
+    
+    public List<Empleado> listarEmpleados() {
+        List<Empleado> listaEmpleado;
+        Query sql = em.createNamedQuery("Empleado.findAll");
+        listaEmpleado = sql.getResultList();
+        return listaEmpleado;
     }
     
 }

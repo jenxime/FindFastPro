@@ -29,6 +29,6 @@ public interface ClienteFacadeLocal {
 
     int count();
 
-    public List<Cliente> ListaClientes();
-    
+    public List<Cliente> listarClientes();
+
 }
