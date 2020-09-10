@@ -34,6 +34,6 @@ public class PlatoFacade extends AbstractFacade<Plato> implements PlatoFacadeLoc
         Query sql = em.createNamedQuery("Plato.findAll");
         ListaPlato = sql.getResultList();
         return ListaPlato;
-    }
+     }
     
 }

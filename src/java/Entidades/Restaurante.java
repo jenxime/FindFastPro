@@ -75,7 +75,7 @@ public class Restaurante implements Serializable {
     private Collection<Ordencompra> ordencompraCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "restauranteRuc")
     private Collection<Empleado> empleadoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "restauranteRuc")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "restauranteruc")
     private Collection<Plato> platoCollection;
 
     public Restaurante() {

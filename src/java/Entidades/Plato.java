@@ -5,7 +5,6 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,8 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,68 +29,72 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Plato.findAll", query = "SELECT p FROM Plato p"),
-    @NamedQuery(name = "Plato.findByIdPlato", query = "SELECT p FROM Plato p WHERE p.idPlato = :idPlato"),
-    @NamedQuery(name = "Plato.findByDescripcionPlato", query = "SELECT p FROM Plato p WHERE p.descripcionPlato = :descripcionPlato"),
+    @NamedQuery(name = "Plato.findByIdplato", query = "SELECT p FROM Plato p WHERE p.idplato = :idplato"),
+    @NamedQuery(name = "Plato.findByDescripcionplato", query = "SELECT p FROM Plato p WHERE p.descripcionplato = :descripcionplato"),
     @NamedQuery(name = "Plato.findByCategoria", query = "SELECT p FROM Plato p WHERE p.categoria = :categoria"),
-    @NamedQuery(name = "Plato.findByPrecioPlato", query = "SELECT p FROM Plato p WHERE p.precioPlato = :precioPlato"),
+    @NamedQuery(name = "Plato.findByPrecioplato", query = "SELECT p FROM Plato p WHERE p.precioplato = :precioplato"),
+    @NamedQuery(name = "Plato.findByNombre", query = "SELECT p FROM Plato p WHERE p.nombre = :nombre"),
     @NamedQuery(name = "Plato.findByImagen", query = "SELECT p FROM Plato p WHERE p.imagen = :imagen"),
-    @NamedQuery(name = "Plato.findByEstadoPlato", query = "SELECT p FROM Plato p WHERE p.estadoPlato = :estadoPlato")})
+    @NamedQuery(name = "Plato.findByEstadoplato", query = "SELECT p FROM Plato p WHERE p.estadoplato = :estadoplato")})
 public class Plato implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_plato")
-    private Integer idPlato;
+    @Column(name = "idplato")
+    private Integer idplato;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "descripcion_plato")
-    private String descripcionPlato;
+    @Column(name = "descripcionplato")
+    private String descripcionplato;
     @Size(max = 255)
     @Column(name = "categoria")
     private String categoria;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "precio_plato")
-    private double precioPlato;
+    @Column(name = "precioplato")
+    private double precioplato;
+    @Size(max = 255)
+    @Column(name = "nombre")
+    private String nombre;
     @Size(max = 255)
     @Column(name = "imagen")
     private String imagen;
-    @Column(name = "estado_plato")
-    @Temporal(TemporalType.TIME)
-    private Date estadoPlato;
-    @JoinColumn(name = "restaurante_ruc", referencedColumnName = "ruc")
+    @Size(max = 255)
+    @Column(name = "estadoplato")
+    private String estadoplato;
+    @JoinColumn(name = "restauranteruc", referencedColumnName = "ruc")
     @ManyToOne(optional = false)
-    private Restaurante restauranteRuc;
+    private Restaurante restauranteruc;
 
     public Plato() {
     }
 
-    public Plato(Integer idPlato) {
-        this.idPlato = idPlato;
+    public Plato(Integer idplato) {
+        this.idplato = idplato;
     }
 
-    public Plato(Integer idPlato, String descripcionPlato, double precioPlato) {
-        this.idPlato = idPlato;
-        this.descripcionPlato = descripcionPlato;
-        this.precioPlato = precioPlato;
+    public Plato(Integer idplato, String descripcionplato, double precioplato) {
+        this.idplato = idplato;
+        this.descripcionplato = descripcionplato;
+        this.precioplato = precioplato;
     }
 
-    public Integer getIdPlato() {
-        return idPlato;
+    public Integer getIdplato() {
+        return idplato;
     }
 
-    public void setIdPlato(Integer idPlato) {
-        this.idPlato = idPlato;
+    public void setIdplato(Integer idplato) {
+        this.idplato = idplato;
     }
 
-    public String getDescripcionPlato() {
-        return descripcionPlato;
+    public String getDescripcionplato() {
+        return descripcionplato;
     }
 
-    public void setDescripcionPlato(String descripcionPlato) {
-        this.descripcionPlato = descripcionPlato;
+    public void setDescripcionplato(String descripcionplato) {
+        this.descripcionplato = descripcionplato;
     }
 
     public String getCategoria() {
@@ -104,12 +105,20 @@ public class Plato implements Serializable {
         this.categoria = categoria;
     }
 
-    public double getPrecioPlato() {
-        return precioPlato;
+    public double getPrecioplato() {
+        return precioplato;
     }
 
-    public void setPrecioPlato(double precioPlato) {
-        this.precioPlato = precioPlato;
+    public void setPrecioplato(double precioplato) {
+        this.precioplato = precioplato;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getImagen() {
@@ -120,26 +129,26 @@ public class Plato implements Serializable {
         this.imagen = imagen;
     }
 
-    public Date getEstadoPlato() {
-        return estadoPlato;
+    public String getEstadoplato() {
+        return estadoplato;
     }
 
-    public void setEstadoPlato(Date estadoPlato) {
-        this.estadoPlato = estadoPlato;
+    public void setEstadoplato(String estadoplato) {
+        this.estadoplato = estadoplato;
     }
 
-    public Restaurante getRestauranteRuc() {
-        return restauranteRuc;
+    public Restaurante getRestauranteruc() {
+        return restauranteruc;
     }
 
-    public void setRestauranteRuc(Restaurante restauranteRuc) {
-        this.restauranteRuc = restauranteRuc;
+    public void setRestauranteruc(Restaurante restauranteruc) {
+        this.restauranteruc = restauranteruc;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idPlato != null ? idPlato.hashCode() : 0);
+        hash += (idplato != null ? idplato.hashCode() : 0);
         return hash;
     }
 
@@ -150,7 +159,7 @@ public class Plato implements Serializable {
             return false;
         }
         Plato other = (Plato) object;
-        if ((this.idPlato == null && other.idPlato != null) || (this.idPlato != null && !this.idPlato.equals(other.idPlato))) {
+        if ((this.idplato == null && other.idplato != null) || (this.idplato != null && !this.idplato.equals(other.idplato))) {
             return false;
         }
         return true;
@@ -158,7 +167,7 @@ public class Plato implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.Plato[ idPlato=" + idPlato + " ]";
+        return "Entidades.Plato[ idplato=" + idplato + " ]";
     }
     
 }
